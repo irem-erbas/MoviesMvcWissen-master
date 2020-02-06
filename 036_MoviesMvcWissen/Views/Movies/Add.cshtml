@@ -5,15 +5,28 @@
 
 <h2>@ViewBag.Title</h2>
 
-<form action="~/Movies/Add" method="post">  @*get yazınca url'de girdiğin veriler geliyor. gizlemek için get yerine post yaptık.*@
+<p style="color:#ff00dc;">
+    @ViewBag.Message
+</p>
+
+<form action="~/Movies/Add" method="post">
+    @*get yazınca url'de girdiğin veriler geliyor. gizlemek için get yerine post yaptık.*@
     <div class="form-group">
         <label for="tbName">Name</label>
         <input type="text" class="form-control" id="tbName" name="Name" />  @*labela tıkladığında textboxa geçmesi için for ve id kullanıyoruz isimleri aynı olacak.*@
     </div>
 
     <div class="form-group">
-        <label for="tbProductionYear">Production Year</label>
-        <input type="text" class="form-control" id="tbProductionYear" name="ProductionYear" />
+        <label for="ddlProductionYear">Production Year</label>
+        <select id="ddlProductionYear" name="ProductionYear" class="form-control">
+            @*dropdown list yaptık*@
+            @for (int i = DateTime.Now.Year; i >= 1900; i--)
+            {
+                <option value="@i">@i</option>
+            }
+            @*<option value="2020" selected>2020</option>
+                <option value="2019">2019</option>*@
+        </select>
     </div>
 
     <div class="form-group">
